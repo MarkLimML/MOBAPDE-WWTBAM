@@ -1,0 +1,23 @@
+{
+  "questions":
+
+  [
+
+    {
+      "question": ["Trinculo admits 'I have been in such a pickle...' in this comedy:"],
+      "answerChoices": ["'The Tempest'", "'Henry 4, Part 1'", "'Henry 5'", "'The Merry Wives of Windsor'"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": ["In 'Hamlet,' this character remarks: 'Neither a borrower nor a lender be; \nFor loan oft loses both itself and friend, \nAnd borrowing dulls the edge of husbandry. \nThis above all: to thine own self be true,\nAnd it must follow, as the night the day,\nThou canst not then be false to any man:'"],
+      "answerChoices": ["Fortinbras", "Gertrude", "Polonius", "The Ghost of Hamlet's Father"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "question": ["Roger Daltrey, well into his career with The Who, played the roles for both Dromios, the twin servants, in a 1983 BBC production of:"],
+      "answerChoices": ["'King John'", "'King Lear'", "'Coriolanus'", "'The Comedy of Errors'"],
+      "correctAnswerIndex": 3
+    }
+
+  ]
+}
