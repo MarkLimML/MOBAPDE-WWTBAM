@@ -57,7 +57,7 @@ public class GameActivity extends AppCompatActivity {
 
         // set the progress
         progressBar.setProgress(progress);
-        // textView_timer.setText(""+progress);
+//        textView_timer.setText(""+progress);
         // thread is used to change the progress value
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -65,13 +65,17 @@ public class GameActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(1000);
                     progressValue++;
+
+
                     if(progressValue == progressBar.getMax()){
                         questionNum++;
                         showQuestionAndChoices();
                         progressValue=0;
                     }
-                    textView_timer.setText(""+progressValue);
-                    setProgressValue(progressValue);
+
+                    textView_timer.setText(""+progressValue); //Cause the program to crash
+                    setProgressValue(progressValue);          //Causes the program to crash
+
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
