@@ -45,7 +45,7 @@
 
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/imageView"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="1.0" />
@@ -162,7 +162,7 @@
         android:layout_marginEnd="204dp"
         android:layout_marginRight="204dp"
         android:layout_marginBottom="149dp"
-        android:text=" "
+        android:text="@string/blank"
         android:textColor="@android:color/white"
         android:textSize="30dp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView"
@@ -183,6 +183,65 @@
         app:layout_constraintEnd_toEndOf="@+id/imageView"
         app:layout_constraintStart_toStartOf="@+id/image3"
         app:layout_constraintTop_toTopOf="@+id/image3" />
+
+    <Button
+        android:id="@+id/fifty"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="4dp"
+
+        android:layout_marginLeft="4dp"
+        android:background="@drawable/fifty"
+        android:onClick="lifeFifty"
+
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/people"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.258" />
+
+    <Button
+        android:id="@+id/people"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/people"
+        android:onClick="lifePeople"
+
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintEnd_toStartOf="@+id/swap"
+        app:layout_constraintStart_toEndOf="@+id/fifty"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.261" />
+
+    <Button
+        android:id="@+id/swap"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/swap"
+        android:onClick="lifeSwap"
+
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintStart_toEndOf="@+id/people"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/volume"
+        app:layout_constraintVertical_bias="0.261" />
+
+    <Button
+        android:id="@+id/volume"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:background="@drawable/volume"
+
+        app:layout_constraintBottom_toTopOf="@+id/progressBar"
+        app:layout_constraintStart_toEndOf="@+id/swap"
+        app:layout_constraintTop_toTopOf="parent"
+
+        app:layout_constraintVertical_bias="0.261" />
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
