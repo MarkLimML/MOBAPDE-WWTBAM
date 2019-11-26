@@ -2,6 +2,7 @@ package com.example.wwtbam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.view.View;
@@ -51,6 +52,22 @@ public class GameActivity extends AppCompatActivity {
         setProgressValue(progressValue);
         getJson();
         showQuestionAndChoices();
+
+        final MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.wwtbambg );
+        final Button volume = findViewById(R.id.volume);
+        mediaplayer.start();
+        volume.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mediaplayer.isPlaying()) {
+                    mediaplayer.pause();
+                    volume.setBackgroundResource(R.drawable.volumex);
+                } else {
+                    mediaplayer.start();
+                    volume.setBackgroundResource(R.drawable.volume);
+                }
+            }
+        });
     }
 
     public void setProgressValue(int progress) {
@@ -73,8 +90,8 @@ public class GameActivity extends AppCompatActivity {
                         progressValue=0;
                     }
 
-                    textView_timer.setText(""+progressValue); //Cause the program to crash
-                    setProgressValue(progressValue);          //Causes the program to crash
+           //         textView_timer.setText(""+progressValue); //Cause the program to crash
+            //        setProgressValue(progressValue);          //Causes the program to crash
 
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -157,4 +174,18 @@ public class GameActivity extends AppCompatActivity {
         }
     }
 
+    public void lifeFifty(View v){
+        v=findViewById(R.id.fifty);
+        v.setVisibility(View.GONE);
+    }
+
+    public void lifePeople(View v){
+        v=findViewById(R.id.people);
+        v.setVisibility(View.GONE);
+    }
+
+    public void lifeSwap(View v){
+        v=findViewById(R.id.swap);
+        v.setVisibility(View.GONE);
+    }
 }
