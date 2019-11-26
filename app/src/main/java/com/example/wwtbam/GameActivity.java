@@ -65,6 +65,11 @@ public class GameActivity extends AppCompatActivity {
                 try {
                     Thread.sleep(1000);
                     progressValue++;
+                    if(progressValue == progressBar.getMax()){
+                        questionNum++;
+                        showQuestionAndChoices();
+                        progressValue=0;
+                    }
                     textView_timer.setText(""+progressValue);
                     setProgressValue(progressValue);
                 } catch (InterruptedException e) {
