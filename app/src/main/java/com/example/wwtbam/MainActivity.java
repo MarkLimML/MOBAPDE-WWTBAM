@@ -11,8 +11,7 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
-    final MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.wwtbambg );
-    final Button volume = findViewById(R.id.volume);
+    View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide(); //hide the title /the top part
 
-
+        final MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.wwtbambg );
+        final Button volume = findViewById(R.id.volume);
         mediaplayer.start();
         volume.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -33,16 +33,20 @@ public class MainActivity extends AppCompatActivity {
                     volume.setBackgroundResource(R.drawable.volume);
                 }
 
+
+
             }
         });
 
     }
 
     public void start(View view) {
-        mediaplayer.stop();
+
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         finish();
 
     }
+
+
 }
