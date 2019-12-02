@@ -31,6 +31,8 @@ public class GameActivity extends AppCompatActivity {
     int questionNum=0,correctAns;
     int progressValue=0;
 
+    static bgmusic_controller bgm;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,19 +55,22 @@ public class GameActivity extends AppCompatActivity {
         getJson();
         showQuestionAndChoices();
 
-        final MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.wwtbambg );
         final Button volume = findViewById(R.id.volume);
-        mediaplayer.start();
+
+        bgm.playbg();
         volume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaplayer.isPlaying()) {
-                    mediaplayer.pause();
+                if (bgm.isPlay()==true) {
+                    bgm.pausebg();
                     volume.setBackgroundResource(R.drawable.volumex);
-                } else {
-                    mediaplayer.start();
+                } else if(bgm.isPlay()==false) {
+                    bgm.playbg();
                     volume.setBackgroundResource(R.drawable.volume);
                 }
+
+
+
             }
         });
     }

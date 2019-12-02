@@ -11,7 +11,7 @@ import android.widget.Button;
 
 
 public class MainActivity extends AppCompatActivity {
-    View v;
+    static bgmusic_controller bgm;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,19 +19,22 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         getSupportActionBar().hide(); //hide the title /the top part
 
-        final MediaPlayer mediaplayer = MediaPlayer.create(this, R.raw.wwtbambg );
+        bgm=new bgmusic_controller(this.getApplicationContext());
+
         final Button volume = findViewById(R.id.volume);
-        mediaplayer.start();
+
+        bgm.playbg();
         volume.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (mediaplayer.isPlaying()) {
-                    mediaplayer.pause();
+                if (bgm.isPlay()==true) {
+                    bgm.pausebg();
                     volume.setBackgroundResource(R.drawable.volumex);
-                } else {
-                    mediaplayer.start();
+                } else if(bgm.isPlay()==false) {
+                    bgm.playbg();
                     volume.setBackgroundResource(R.drawable.volume);
                 }
+
 
 
 
@@ -41,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
-
+        bgm.stopbg();
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
         finish();
