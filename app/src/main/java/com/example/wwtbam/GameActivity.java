@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.JsonReader;
 import android.view.View;
 import android.widget.Button;
@@ -33,11 +34,15 @@ public class GameActivity extends AppCompatActivity {
 
     static bgmusic_controller bgm;
 
+    public Handler handler = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
         getSupportActionBar().hide();
+
+        bgm=new bgmusic_controller(this.getApplicationContext());
 
         buttonA = findViewById(R.id.answerA);
         buttonB = findViewById(R.id.answerB);
@@ -46,12 +51,12 @@ public class GameActivity extends AppCompatActivity {
 
         textview_question = findViewById(R.id.textview_question);
         textView_timer = findViewById(R.id.textView_timer);
-        textView_timer.setText(""+progressValue);
+        textView_timer.setText(String.valueOf(progressValue));
 
         progressBar = findViewById(R.id.progressBar);
 
         progressBar.setMax(30);
-        setProgressValue(progressValue);
+        setProgressValue();
         getJson();
         showQuestionAndChoices();
 
@@ -75,36 +80,64 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-    public void setProgressValue(int progress) {
+    public void setProgressValue() {
 
         // set the progress
-        progressBar.setProgress(progress);
-//        textView_timer.setText(""+progress);
+        progressBar.setProgress(progressValue);
+        textView_timer.setText(String.valueOf(progressValue));
         // thread is used to change the progress value
-        Thread thread = new Thread(new Runnable() {
-            @Override
+//        Thread thread = new Thread(new Runnable() {
+//            @Override
+//            public void run() {
+//                try {
+//                    Thread.sleep(1000);
+//                    progressValue++;
+//
+//                    if(progressValue == progressBar.getMax()){
+//                        questionNum++;
+//                        showQuestionAndChoices();
+//                        progressValue=0;
+//                    }
+//
+//                  //textView_timer.setText(String.valueOf(progressValue));
+//                setProgressValue();
+//
+//                } catch (InterruptedException e) {
+//                    e.printStackTrace();
+//                }
+//
+//            }
+//        });
+//        thread.start();
+
+        new Thread(new Runnable() {
             public void run() {
-                try {
-                    Thread.sleep(1000);
-                    progressValue++;
-
-
-                    if(progressValue == progressBar.getMax()){
+                while (progressValue <= 30) {
+                    progressValue += 1;
+                    // Update the progress bar and display the
+                    //current value in the text view
+                    handler.post(new Runnable() {
+                        public void run() {
+                            progressBar.setProgress(progressValue);
+                            textView_timer.setText(progressValue+"/"+progressBar.getMax());
+                        }
+                    });
+                    if(progressValue == 29){
+                        //Toast.makeText(getApplicationContext(),"Times Up!!!",Toast.LENGTH_SHORT).show();
                         questionNum++;
                         showQuestionAndChoices();
-                        progressValue=0;
+                        progressValue = 0;
                     }
-
-           //         textView_timer.setText(""+progressValue); //Cause the program to crash
-            //        setProgressValue(progressValue);          //Causes the program to crash
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
+                    try {
+                        // Sleep for 200 milliseconds.
+                        Thread.sleep(200);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
                 }
 
             }
-        });
-        thread.start();
+        }).start();
     }
 
     public void getJson(){
@@ -171,6 +204,10 @@ public class GameActivity extends AppCompatActivity {
         if(choiceNum == correctAns){
             Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
             questionNum++;
+            if(questionNum == 3){
+                questionNum = 0;
+            }
+            progressValue = 0;
             showQuestionAndChoices();
         }
         else{
