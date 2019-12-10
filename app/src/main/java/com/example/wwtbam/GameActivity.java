@@ -18,6 +18,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.Random;
+
+import static android.view.View.VISIBLE;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -31,10 +34,17 @@ public class GameActivity extends AppCompatActivity {
 
     int questionNum=0,correctAns;
     int progressValue=0;
+    int hidChoiceNum, firstHidNum,secondHidNum;
+    int fnum=0, snum=0, tnum=0,lnum=0;
+    int flimit,slimit;
 
     static bgmusic_controller bgm;
 
-    public Handler handler = new Handler();
+    Handler handler = new Handler();
+
+    Random random = new Random();
+
+    boolean hidflag;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,30 +95,6 @@ public class GameActivity extends AppCompatActivity {
         // set the progress
         progressBar.setProgress(progressValue);
         textView_timer.setText(String.valueOf(progressValue));
-        // thread is used to change the progress value
-//        Thread thread = new Thread(new Runnable() {
-//            @Override
-//            public void run() {
-//                try {
-//                    Thread.sleep(1000);
-//                    progressValue++;
-//
-//                    if(progressValue == progressBar.getMax()){
-//                        questionNum++;
-//                        showQuestionAndChoices();
-//                        progressValue=0;
-//                    }
-//
-//                  //textView_timer.setText(String.valueOf(progressValue));
-//                setProgressValue();
-//
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                }
-//
-//            }
-//        });
-//        thread.start();
 
         new Thread(new Runnable() {
             public void run() {
@@ -122,15 +108,20 @@ public class GameActivity extends AppCompatActivity {
                             textView_timer.setText(progressValue+"/"+progressBar.getMax());
                         }
                     });
-                    if(progressValue == 29){
-                        //Toast.makeText(getApplicationContext(),"Times Up!!!",Toast.LENGTH_SHORT).show();
+                    if(progressValue == 30){
+                        showToast("Times Up !!!");
                         questionNum++;
+
+                        if(questionNum == 9){
+                            questionNum = 0;
+                        }
+
                         showQuestionAndChoices();
                         progressValue = 0;
                     }
                     try {
                         // Sleep for 200 milliseconds.
-                        Thread.sleep(200);
+                        Thread.sleep(500);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -166,7 +157,13 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void showQuestionAndChoices(){
+
+        setVisibleBtn();
+
         try {
+            if(questionNum > 10){
+                questionNum = 0;
+            }
             obj = jsonArray.getJSONObject(questionNum);
 
             choices = obj.getJSONArray("answerChoices");
@@ -204,7 +201,7 @@ public class GameActivity extends AppCompatActivity {
         if(choiceNum == correctAns){
             Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
             questionNum++;
-            if(questionNum == 3){
+            if(questionNum >10){
                 questionNum = 0;
             }
             progressValue = 0;
@@ -218,16 +215,130 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifeFifty(View v){
         v=findViewById(R.id.fifty);
-        v.setVisibility(View.GONE);
+       // v.setVisibility(View.GONE);
+
+            firstHidNum = random.nextInt(4);
+            secondHidNum = random.nextInt(4);
+
+            while(firstHidNum == correctAns || firstHidNum == 0){
+                firstHidNum = random.nextInt(4);
+            }
+
+            while(secondHidNum == correctAns || secondHidNum == firstHidNum || secondHidNum == 0){
+                secondHidNum = random.nextInt(4);
+            }
+
+            //showToast("First:"+firstHidNum+"second"+secondHidNum+ "corrcetAns:"+ correctAns);
+
+                if(firstHidNum == 1){
+                    buttonA.setVisibility(View.INVISIBLE);
+                }
+                else if(firstHidNum == 2){
+                    buttonB.setVisibility(View.INVISIBLE);
+                }
+                else if(firstHidNum == 3){
+                    buttonC.setVisibility(View.INVISIBLE);
+                }
+                else if(firstHidNum == 4){
+                    buttonD.setVisibility(View.INVISIBLE);
+                }
+
+                if(secondHidNum == 1){
+                    buttonA.setVisibility(View.INVISIBLE);
+                }
+                else if(secondHidNum == 2){
+                    buttonB.setVisibility(View.INVISIBLE);
+                }
+                else if(secondHidNum == 3){
+                    buttonC.setVisibility(View.INVISIBLE);
+                }
+                else if(secondHidNum == 4){
+                    buttonD.setVisibility(View.INVISIBLE);
+                }
+
     }
 
     public void lifePeople(View v){
         v=findViewById(R.id.people);
-        v.setVisibility(View.GONE);
+        //v.setVisibility(View.GONE);
+
+
+        while(fnum < 50){
+            fnum = random.nextInt(100);
+        }
+        flimit = 100 - fnum;
+
+        while(snum == 0 || snum == 49){
+            snum = random.nextInt(flimit);
+        }
+        slimit = flimit - snum;
+
+        while(tnum == 0){
+            tnum = random.nextInt(slimit);
+        }
+
+        lnum = slimit - tnum;
+
+        if(correctAns == 1){
+            buttonA.setText(buttonA.getText()+ "  "+ fnum +"%");
+            buttonB.setText(buttonB.getText()+ "  "+ lnum +"%");
+            buttonC.setText(buttonC.getText()+ "  "+ snum +"%");
+            buttonD.setText(buttonD.getText()+ "  "+ tnum +"%");
+        }
+        else if(correctAns == 2){
+            buttonA.setText(buttonA.getText()+ "  "+ lnum +"%");
+            buttonB.setText(buttonB.getText()+ "  "+ fnum +"%");
+            buttonC.setText(buttonC.getText()+ "  "+ snum +"%");
+            buttonD.setText(buttonD.getText()+ "  "+ tnum +"%");
+        }
+        else if(correctAns == 3){
+            buttonA.setText(buttonA.getText()+ "  "+ lnum +"%");
+            buttonB.setText(buttonB.getText()+ "  "+ snum +"%");
+            buttonC.setText(buttonC.getText()+ "  "+ fnum +"%");
+            buttonD.setText(buttonD.getText()+ "  "+ tnum +"%");
+        }
+        else if(correctAns == 4){
+            buttonA.setText(buttonA.getText()+ "  "+ lnum +"%");
+            buttonB.setText(buttonB.getText()+ "  "+ snum +"%");
+            buttonC.setText(buttonC.getText()+ "  "+ tnum +"%");
+            buttonD.setText(buttonD.getText()+ "  "+ fnum +"%");
+        }
+
+        fnum = 0;
+        snum = 0;
+        tnum = 0;
+        lnum = 0;
     }
 
     public void lifeSwap(View v){
         v=findViewById(R.id.swap);
-        v.setVisibility(View.GONE);
+       // v.setVisibility(View.GONE);
+        questionNum++;
+        showQuestionAndChoices();
     }
+
+    //will work during thread
+    public void showToast(final String toast)
+    {
+        runOnUiThread(new Runnable() {
+            public void run() {
+                Toast.makeText(getApplicationContext(), toast, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    //will work during thread
+    public void setVisibleBtn(){
+        runOnUiThread(new Runnable() {
+            public void run() {
+                buttonA.setVisibility(View.VISIBLE);
+                buttonB.setVisibility(View.VISIBLE);
+                buttonC.setVisibility(View.VISIBLE);
+                buttonD.setVisibility(View.VISIBLE);
+            }
+        });
+    }
+
+
+
 }

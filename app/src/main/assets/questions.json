@@ -17,6 +17,46 @@
       "question": ["Roger Daltrey, well into his career with The Who, played the roles for both Dromios, the twin servants, in a 1983 BBC production of:"],
       "answerChoices": ["'King John'", "'King Lear'", "'Coriolanus'", "'The Comedy of Errors'"],
       "correctAnswerIndex": 3
+    },
+    {
+      "question": ["What is the color of Donald Duck's bowtie?"],
+      "answerChoices": ["'Red'", "'Blue'", "'Green'", "'Pink'"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": ["How many blue stripes does the United States of America national flag have?"],
+      "answerChoices": ["'40'", "'25'", "'0'", "'10'"],
+      "correctAnswerIndex": 2
+    },
+    {
+      "question": ["Which country hosted the Summer Olympics in 2016?"],
+      "answerChoices": ["'China'", "'America'", "'Philippines'", "'Brazil'"],
+      "correctAnswerIndex": 3
+    },
+    {
+      "question": ["What is the largest country, by area, that has only one time zone?"],
+      "answerChoices": ["'China'", "'Russia'", "'Australia'", "'Turkey'"],
+      "correctAnswerIndex": 0
+    },
+    {
+      "question": ["What is the largest planet in our Solar System?"],
+      "answerChoices": ["'Saturn'", "'Jupiter'", "'Earth'", "'Pluto'"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": ["What did Alfred Nobel develop?"],
+      "answerChoices": ["'Nobelium'", "'Dynamite'", "'Gunpowder'", "'Atomic Bomb'"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": ["Who went to school with a lamb?"],
+      "answerChoices": ["'Mark'", "'Mary'", "'Jack'", "'Jude'"],
+      "correctAnswerIndex": 1
+    },
+    {
+      "question": ["How many degrees are found in a circle?"],
+      "answerChoices": ["'10080'", "'999'", "'180'", "'360'"],
+      "correctAnswerIndex": 3
     }
 
   ]
