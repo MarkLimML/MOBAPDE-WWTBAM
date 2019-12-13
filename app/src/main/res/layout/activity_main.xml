@@ -13,34 +13,31 @@
      <ImageView
          android:id="@+id/bgimage"
          android:layout_width="match_parent"
-         android:layout_height="250dp"
+         android:layout_height="200dp"
          android:background="@drawable/bg1"
          android:layout_marginTop="100dp"/>
     <Button
         android:id="@+id/start"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autoSizeMaxTextSize="50sp"
-        android:autoSizeTextType="uniform"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
 
         android:background="@drawable/newgame"
         android:onClick="start"
 
-        android:text="New Game"
         android:layout_below="@+id/bgimage"
         android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
         />
 
     <Button
         android:id="@+id/exit"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:autoSizeMaxTextSize="50sp"
-        android:autoSizeTextType="uniform"
+        android:layout_width="300dp"
+        android:layout_height="100dp"
 
         android:background="@drawable/exit"
-        android:text="Exit"
+
         android:layout_below="@+id/start"
+        android:layout_centerHorizontal="true"
        />
 
     <Button
