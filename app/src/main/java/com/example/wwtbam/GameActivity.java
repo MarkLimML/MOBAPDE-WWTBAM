@@ -174,20 +174,22 @@ public class GameActivity extends AppCompatActivity {
             int j = rnd.nextInt(i + 1);
             JSONObject jo = array.getJSONObject(i);
             JSONObject jo2 = array.getJSONObject(j);
-            if((jo.getInt("difficulty") == 3 && jo2.getInt("difficulty") == 3)/* && (i < array.length()-1 && i >= 10)*/) {
-                Object object = array.get(j);
-                array.put(j, array.get(i));
-                array.put(i, object);
-            }
-            else if((jo.getInt("difficulty") == 2 && jo2.getInt("difficulty") == 2)/* && (i < 9 && i >= 5)*/) {
-                Object object = array.get(j);
-                array.put(j, array.get(i));
-                array.put(i, object);
-            }
-            else if((jo.getInt("difficulty") == 1 && jo2.getInt("difficulty") == 1)/* && (i < 4 && i >= 0)*/) {
-                Object object = array.get(j);
-                array.put(j, array.get(i));
-                array.put(i, object);
+            if(jo != jo2) {
+                if ((jo.getInt("difficulty") == 3 && jo2.getInt("difficulty") == 3)/* && (i < array.length()-1 && i >= 10)*/) {
+                    Object object = array.get(j);
+                    array.put(j, array.get(i));
+                    array.put(i, object);
+                } else if ((jo.getInt("difficulty") == 2 && jo2.getInt("difficulty") == 2)/* && (i < 9 && i >= 5)*/) {
+                    Object object = array.get(j);
+                    array.put(j, array.get(i));
+                    array.put(i, object);
+                } else if ((jo.getInt("difficulty") == 1 && jo2.getInt("difficulty") == 1)/* && (i < 4 && i >= 0)*/) {
+                    Object object = array.get(j);
+                    array.put(j, array.get(i));
+                    array.put(i, object);
+                } else {
+                    i++;
+                }
             }
             else {
                 i++;
