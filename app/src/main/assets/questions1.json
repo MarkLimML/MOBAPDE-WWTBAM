@@ -3,186 +3,186 @@
 
   [
 	{
-      "question": ["How many degrees are found in a circle?"],
-      "answerChoices": ["'10080'", "'999'", "'180'", "'360'"],
+      "question": "How many degrees are found in a circle?",
+      "answerChoices": ["10080", "999", "180", "360"],
       "correctAnswerIndex": 3,
 	  "difficulty": 1
     },
 	{
-      "question": ["What is the largest planet in our Solar System?"],
-      "answerChoices": ["'Saturn'", "'Jupiter'", "'Earth'", "'Pluto'"],
+      "question": "What is the largest planet in our Solar System?",
+      "answerChoices": ["Saturn", "Jupiter", "Earth", "Pluto"],
       "correctAnswerIndex": 1,
 	  "difficulty": 1
     },
 	{
-      "question": ["Who went to school with a lamb?"],
-      "answerChoices": ["'Mark'", "'Mary'", "'Jack'", "'Jude'"],
+      "question": "Who went to school with a lamb?",
+      "answerChoices": ["Mark", "Mary", "Jack", "Jude"],
       "correctAnswerIndex": 1,
 	  "difficulty": 1
     },
 	{
-      "question": ["How many degrees are found in a circle?"],
-      "answerChoices": ["'10080'", "'999'", "'180'", "'360'"],
+      "question": "How many degrees are found in a circle?",
+      "answerChoices": ["10080", "999", "180", "360"],
       "correctAnswerIndex": 3,
 	  "difficulty": 1
     },
 	{
-      "question": ["Which fictional city is the home of Batman?"],
-      "answerChoices": ["'Gotham City'", "'Pallet Town'", "'Konoha'", "'Metropolis'"],
+      "question": "Which fictional city is the home of Batman?",
+      "answerChoices": ["Gotham City", "Pallet Town", "Konoha", "Metropolis"],
       "correctAnswerIndex": 0,
 	  "difficulty": 1
     },
 	{
-      "question": ["What is the first letter of the english alphabet?"],
-      "answerChoices": ["'B'", "'C'", "'A'", "'D'"],
+      "question": "What is the first letter of the english alphabet?",
+      "answerChoices": ["B", "C", "A", "D"],
       "correctAnswerIndex": 2,
 	  "difficulty": 1
     },
 	{
-      "question": ["In the film Babe, what type of animal was Babe?"],
-      "answerChoices": ["'Pig'", "'Spider'", "'Chicken'", "'Cow'"],
+      "question": "In the film Babe, what type of animal was Babe?",
+      "answerChoices": ["Pig", "Spider", "Chicken", "Cow"],
       "correctAnswerIndex": 0,
 	  "difficulty": 1
     },
 	{
-      "question": [" Which planet is the closest to Earth?"],
-      "answerChoices": ["'Venus'", "'Moon'", "'Mercury'", "'Mars'"],
+      "question": " Which planet is the closest to Earth?",
+      "answerChoices": ["Venus", "Moon", "Mercury", "Mars"],
       "correctAnswerIndex": 0,
 	  "difficulty": 1
     },
 	{
-      "question": ["Which sign of the zodiac is represented by the ram?"],
-      "answerChoices": ["'Gemini'", "'Aries'", "'Virgo'", "'Leo'"],
+      "question": "Which sign of the zodiac is represented by the ram?",
+      "answerChoices": ["Gemini", "Aries", "Virgo", "Leo"],
       "correctAnswerIndex": 1,
 	  "difficulty": 1
     },
 	{
-      "question": ["What color is the circle on the Japanese national flag?"],
-      "answerChoices": ["'Blue'", "'Green'", "'Maroon'", "'Red'"],
+      "question": "What color is the circle on the Japanese national flag?",
+      "answerChoices": ["Blue", "Green", "Maroon", "Red"],
       "correctAnswerIndex": 3,
 	  "difficulty": 1
     },
 	
 	
     {
-      "question": ["What did Alfred Nobel develop?"],
-      "answerChoices": ["'Nobelium'", "'Dynamite'", "'Gunpowder'", "'Atomic Bomb'"],
+      "question": "What did Alfred Nobel develop?",
+      "answerChoices": ["Nobelium", "Dynamite", "Gunpowder", "Atomic Bomb"],
       "correctAnswerIndex": 1,
 	  "difficulty": 2
     },
     {
-      "question": ["In 'Hamlet,' this character remarks: 'Neither a borrower nor a lender be; \nFor loan oft loses both itself and friend, \nAnd borrowing dulls the edge of husbandry. \nThis above all: to thine own self be true,\nAnd it must follow, as the night the day,\nThou canst not then be false to any man:'"],
-      "answerChoices": ["Fortinbras", "Gertrude", "Polonius", "The Ghost of Hamlet's Father"],
+      "question": "In Hamlet, this character remarks: Neither a borrower nor a lender be; \nFor loan oft loses both itself and friend, \nAnd borrowing dulls the edge of husbandry. \nThis above all: to thine own self be true,\nAnd it must follow, as the night the day,\nThou canst not then be false to any man:",
+      "answerChoices": ["Fortinbras", "Gertrude", "Polonius", "The Ghost of Hamlets Father"],
       "correctAnswerIndex": 2,
 	  "difficulty": 2
     },
     {
-      "question": ["What is the color of Donald Duck's bowtie?"],
-      "answerChoices": ["'Red'", "'Blue'", "'Green'", "'Pink'"],
+      "question": "What is the color of Donald Ducks bowtie?",
+      "answerChoices": ["Red", "Blue", "Green", "Pink"],
       "correctAnswerIndex": 0,
 	  "difficulty": 2
     },
     {
-      "question": ["How many blue stripes does the United States of America national flag have?"],
-      "answerChoices": ["'40'", "'25'", "'0'", "'10'"],
+      "question": "How many blue stripes does the United States of America national flag have?",
+      "answerChoices": ["40", "25", "0", "10"],
       "correctAnswerIndex": 2,
 	  "difficulty": 2
     },
     {
-      "question": ["Which country hosted the Summer Olympics in 2016?"],
-      "answerChoices": ["'China'", "'America'", "'Philippines'", "'Brazil'"],
+      "question": "Which country hosted the Summer Olympics in 2016?",
+      "answerChoices": ["China", "America", "Philippines", "Brazil"],
       "correctAnswerIndex": 3,
 	  "difficulty": 2
     },
 	{
-      "question": ["Which part of the body would a chiropodist treat?"],
-      "answerChoices": ["'Feet'", "'Arm'", "'Bones'", "'Cervix'"],
+      "question": "Which part of the body would a chiropodist treat?",
+      "answerChoices": ["Feet", "Arm", "Bones", "Cervix"],
       "correctAnswerIndex": 0,
 	  "difficulty": 2
     },
 	{
-      "question": ["What is the name of the city where the cartoon family The Simpsons live?"],
-      "answerChoices": ["'Quahog'", "'Langley Falls'", "'Springfield'", "'McLean'"],
+      "question": "What is the name of the city where the cartoon family The Simpsons live?",
+      "answerChoices": ["Quahog", "Langley Falls", "Springfield", "McLean"],
       "correctAnswerIndex": 2,
 	  "difficulty": 2
     },
 	{
-      "question": ["On which mountain did Moses receive the Ten Commandments?"],
-      "answerChoices": ["'Mount Catherin'", "'Mount Serbal'", "'Mount Everest'", "'Mount Sinai'"],
+      "question": "On which mountain did Moses receive the Ten Commandments?",
+      "answerChoices": ["Mount Catherin", "Mount Serbal", "Mount Everest", "Mount Sinai"],
       "correctAnswerIndex": 3,
 	  "difficulty": 2
     },
 	{
-      "question": ["How many strings does a violin have?"],
-      "answerChoices": ["'7'", "'6'", "'5'", "'4'"],
+      "question": "How many strings does a violin have?",
+      "answerChoices": ["7", "6", "5", "4"],
       "correctAnswerIndex": 3,
 	  "difficulty": 2
     },
 	{
-      "question": ["According to the old proverb, to which European capital city do all roads lead?"],
-      "answerChoices": ["'Egypt'", "'Rome'", "'West Virginia'", "'Middle East'"],
+      "question": "According to the old proverb, to which European capital city do all roads lead?",
+      "answerChoices": ["Egypt", "Rome", "West Virginia", "Middle East"],
       "correctAnswerIndex": 1,
 	  "difficulty": 2
     },
 	
 	
     {
-      "question": ["What is the largest country, by area, that has only one time zone?"],
-      "answerChoices": ["'China'", "'Russia'", "'Australia'", "'Turkey'"],
+      "question": "What is the largest country, by area, that has only one time zone?",
+      "answerChoices": ["China", "Russia", "Australia", "Turkey"],
       "correctAnswerIndex": 0,
 	  "difficulty": 3
     },
 	{
-      "question": ["Trinculo admits 'I have been in such a pickle...' in this comedy:"],
-      "answerChoices": ["'The Tempest'", "'Henry 4, Part 1'", "'Henry 5'", "'The Merry Wives of Windsor'"],
+      "question": "Trinculo admits I have been in such a pickle... in this comedy:",
+      "answerChoices": ["The Tempest", "Henry 4, Part 1", "Henry 5", "The Merry Wives of Windsor"],
       "correctAnswerIndex": 0,
 	  "difficulty": 3
     },
 	{
-      "question": ["Roger Daltrey, well into his career with The Who, played the roles for both Dromios, the twin servants, in a 1983 BBC production of:"],
-      "answerChoices": ["'King John'", "'King Lear'", "'Coriolanus'", "'The Comedy of Errors'"],
+      "question": "Roger Daltrey, well into his career with The Who, played the roles for both Dromios, the twin servants, in a 1983 BBC production of:",
+      "answerChoices": ["King John", "King Lear", "Coriolanus", "The Comedy of Errors"],
       "correctAnswerIndex": 3,
 	  "difficulty": 3
     },
 	{
-      "question": ["The title role of the 1990 movie “Pretty Woman” was played by which actress"],
-      "answerChoices": ["'Julia Roberts'", "'Jodie Foster'", "'Sandra Bullock'", "'Meg Ryan'"],
+      "question": "The title role of the 1990 movie “Pretty Woman” was played by which actress",
+      "answerChoices": ["Julia Roberts", "Jodie Foster", "Sandra Bullock", "Meg Ryan"],
       "correctAnswerIndex": 0,
 	  "difficulty": 3
     },
 	{
-      "question": ["Name the number that is three more than one-fifth of one-tenth of one-half of 5,000."],
-      "answerChoices": ["'503'", "'53'", "'108'", "'253'"],
+      "question": "Name the number that is three more than one-fifth of one-tenth of one-half of 5,000.",
+      "answerChoices": ["503", "53", "108", "253"],
       "correctAnswerIndex": 1,
 	  "difficulty": 3
     },
 	{
-      "question": ["What is the only United States state that only borders one another?"],
-      "answerChoices": ["'Florida'", "'Washington'", "'Rhode Island'", "'Maine'"],
+      "question": "What is the only United States state that only borders one another?",
+      "answerChoices": ["Florida", "Washington", "Rhode Island", "Maine"],
       "correctAnswerIndex": 3,
 	  "difficulty": 3
     },
 	{
-      "question": ["What's the oldest continuously inhabited city in the world?"],
-      "answerChoices": ["'Athens, Greece'", "'Damascus, Syria'", "'Istanbul, Turkey'", "'Jerusalem'"],
+      "question": "Whats the oldest continuously inhabited city in the world?",
+      "answerChoices": ["Athens, Greece", "Damascus, Syria", "Istanbul, Turkey", "Jerusalem"],
       "correctAnswerIndex": 1,
 	  "difficulty": 3
     },
 	{
-      "question": ["Vehicles from which country use the international registration letters WG?"],
-      "answerChoices": ["'Wakanda'", "'Canada'", "'Samoa'", "'Grenada'"],
+      "question": "Vehicles from which country use the international registration letters WG?",
+      "answerChoices": ["Wakanda", "Canada", "Samoa", "Grenada"],
       "correctAnswerIndex": 3,
 	  "difficulty": 3
     },
 	{
-      "question": ["What was Elton John’s first US No 1 hit?"],
-      "answerChoices": ["'Crocodile Rock'", "'Honky Cat'", "'Candle in the Wind'", "'Can't Stay Alone Tonight'"],
+      "question": "What was Elton John’s first US No 1 hit?",
+      "answerChoices": ["Crocodile Rock", "Honky Cat", "Candle in the Wind", "Cant Stay Alone Tonight"],
       "correctAnswerIndex": 0,
 	  "difficulty": 3
     },
 	{
-      "question": ["What was the name of the Italian cruise ship hijacked by Palestinian terrorists in October 1985?"],
-      "answerChoices": ["'Arcadia'", "'Adonia'", "Achille Lauro''", "'Balmoral'"],
+      "question": "What was the name of the Italian cruise ship hijacked by Palestinian terrorists in October 1985?",
+      "answerChoices": ["Arcadia", "Adonia", "Achille Lauro", "Balmoral"],
       "correctAnswerIndex": 2,
 	  "difficulty": 3
     }
