@@ -140,7 +140,7 @@ public class GameActivity extends AppCompatActivity {
         String json;
 
         try {
-            InputStream inputStream = getAssets().open("questions.json");
+            InputStream inputStream = getAssets().open("questions1.json");
 
             int size = inputStream.available();
             byte[] buffer = new byte[size];
@@ -166,9 +166,26 @@ public class GameActivity extends AppCompatActivity {
         for (int i = array.length() - 1; i >= 0; i--)
         {
             int j = rnd.nextInt(i + 1);
-            Object object = array.get(j);
-            array.put(j, array.get(i));
-            array.put(i, object);
+            JSONObject jo = array.getJSONObject(i);
+            JSONObject jo2 = array.getJSONObject(j);
+            if((jo.getInt("difficulty") == 3 && jo2.getInt("difficulty") == 3) && (i < array.length()-1 && i >= 10)) {
+                Object object = array.get(j);
+                array.put(j, array.get(i));
+                array.put(i, object);
+            }
+            else if((jo.getInt("difficulty") == 2 && jo2.getInt("difficulty") == 2) && (i < 9 && i >= 5)) {
+                Object object = array.get(j);
+                array.put(j, array.get(i));
+                array.put(i, object);
+            }
+            else if((jo.getInt("difficulty") == 1 && jo2.getInt("difficulty") == 1) && (i < 4 && i >= 0)) {
+                Object object = array.get(j);
+                array.put(j, array.get(i));
+                array.put(i, object);
+            }
+            else {
+                i++;
+            }
         }
         return array;
     }
@@ -226,6 +243,7 @@ public class GameActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
+
             //game over na ba
         }
     }
@@ -277,7 +295,6 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifePeople(View v){
         v=findViewById(R.id.people);
-        v.setEnabled(false);
         //v.setVisibility(View.GONE);
 
 
