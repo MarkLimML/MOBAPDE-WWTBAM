@@ -2,17 +2,13 @@ package com.example.wwtbam;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.media.MediaPlayer;
-import android.os.Bundle;
-import android.view.View;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-
-public class MainActivity extends AppCompatActivity {
+public class gameover extends AppCompatActivity {
     static bgmusic_controller bgm;
-    Button start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,8 +17,6 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); //hide the title /the top part
 
         bgm=new bgmusic_controller(this.getApplicationContext());
-
-        start = findViewById(R.id.start);
 
         final Button volume = findViewById(R.id.volume);
 
@@ -46,16 +40,15 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+
+    //probably won't work, tried  to use "recreate()" but can not implement it
     public void start(View view) {
-        start.setEnabled(false);
         bgm.stopbg();
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
-        start.setEnabled(true);
         finish();
+
     }
-
-
-
-
+//according to net not advisable daw ung mag "exit" ung app, dapat ung os mismo kasi pagka
+// app lng di siya nag frefree ng resources sa phone based sa understanding ko
 }

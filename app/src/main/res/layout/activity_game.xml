@@ -13,7 +13,8 @@
         android:id="@+id/questionpart"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="20dp">
 
 
         <ImageView
@@ -39,24 +40,23 @@
 
         <TextView
             android:id="@+id/textview_question"
-            android:layout_width="403dp"
-            android:layout_height="77dp"
+            android:layout_width="359dp"
+            android:layout_height="75dp"
+            android:layout_centerHorizontal="true"
             android:layout_marginTop="125dp"
 
             android:autoSizeMaxTextSize="75sp"
             android:autoSizeTextType="uniform"
 
             android:text="Question"
-            android:textColor="@android:color/white"
-            />
+            android:textColor="@android:color/white" />
 
         <TextView
             android:id="@+id/textView_timer"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="229dp"
-            android:layout_marginLeft="229dp"
             android:layout_marginTop="31dp"
+
 
             android:text="30"
             android:textColor="@android:color/white"
@@ -66,9 +66,12 @@
         <ProgressBar
             android:id="@+id/progressBar"
             style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_below="@+id/textView_timer"
             android:layout_width="459dp"
             android:layout_height="20dp"
-            android:layout_marginTop="127dp"
+            android:layout_centerHorizontal="true"
+
+
 
             />
 
@@ -83,6 +86,17 @@
 
             />
 
+        <TextView
+            android:id="@+id/money"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="$0"
+            android:textSize="20dp"
+            android:textStyle="bold"
+            android:layout_alignParentLeft="true"
+            android:textColor="@color/gold"
+            />
+
     </RelativeLayout>
 
     <LinearLayout
@@ -90,13 +104,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
         android:orientation="vertical"
         android:layout_below="@+id/questionpart">
 
         <Button
             android:id="@+id/answerA"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
 
             android:autoSizeMaxTextSize="20sp"
 
@@ -108,9 +123,9 @@
 
         <Button
             android:id="@+id/answerB"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
             android:autoSizeMaxTextSize="20sp"
 
             android:autoSizeTextType="uniform"
@@ -123,9 +138,9 @@
 
         <Button
             android:id="@+id/answerC"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
-
+            android:layout_width="300dp"
+            android:layout_height="80dp"
+            android:layout_marginTop="10dp"
             android:autoSizeMaxTextSize="20sp"
 
             android:autoSizeTextType="uniform"
@@ -138,10 +153,10 @@
 
         <Button
             android:id="@+id/answerD"
-            android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_width="300dp"
+            android:layout_height="80dp"
             android:autoSizeMaxTextSize="20sp"
-
+            android:layout_marginTop="10dp"
             android:autoSizeTextType="uniform"
             android:background="@drawable/questiond"
 
@@ -157,8 +172,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_below="@+id/answerpart"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_below="@+id/answerpart"
         >
         <Button
             android:id="@+id/fifty"
