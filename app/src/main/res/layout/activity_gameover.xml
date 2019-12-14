@@ -104,18 +104,6 @@
             android:layout_centerHorizontal="true"
             />
 
-        <Button
-            android:id="@+id/exit"
-            android:layout_width="300dp"
-            android:layout_height="100dp"
-
-            android:background="@drawable/exit"
-
-            android:layout_below="@+id/start"
-            android:layout_centerHorizontal="true"
-            android:onClick="exit"
-            />
-
     </RelativeLayout>
 
 </RelativeLayout>
