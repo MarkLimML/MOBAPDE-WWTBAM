@@ -253,6 +253,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(int choiceNum){
+        int fscore = 0;
         if(choiceNum == correctAns){
             try {
                 jsonArray.getJSONObject(questionNum).put("difficulty", 4);
@@ -266,15 +267,15 @@ public class GameActivity extends AppCompatActivity {
 
             money.setText("$"+scores[progressValue]);
             if(progressValue == 15) {
+                fscore = scores[15];
                 Intent intent = new Intent(this, GameOver.class);
-                intent.putExtra("score", money.getText().subSequence(1, money.getText().length()-1));
+                intent.putExtra("score", String.valueOf(fscore));
                 startActivityForResult(intent, 0);
             }
             if(progressValue < 15)
                 showQuestionAndChoices();
         }
         else{
-            int fscore = 0;
             if(progressValue < 5)
                 fscore = scores[0];
             else if(progressValue < 10)
