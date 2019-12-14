@@ -276,6 +276,7 @@ public class GameActivity extends AppCompatActivity {
                 showQuestionAndChoices();
         }
         else{
+            bgm.stopbg();
             if(progressValue < 5)
                 fscore = scores[0];
             else if(progressValue < 10)
