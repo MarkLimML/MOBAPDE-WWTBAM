@@ -12,6 +12,7 @@ import android.widget.Button;
 
 public class MainActivity extends AppCompatActivity {
     static bgmusic_controller bgm;
+    Button start;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity {
         getSupportActionBar().hide(); //hide the title /the top part
 
         bgm=new bgmusic_controller(this.getApplicationContext());
+
+        start = findViewById(R.id.start);
 
         final Button volume = findViewById(R.id.volume);
 
@@ -44,9 +47,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void start(View view) {
+        start.setEnabled(false);
         bgm.stopbg();
         Intent intent = new Intent(this, GameActivity.class);
         startActivity(intent);
+        start.setEnabled(true);
         finish();
 
     }
