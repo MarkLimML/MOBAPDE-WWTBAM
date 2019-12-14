@@ -1,7 +1,9 @@
 package com.example.wwtbam;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
@@ -243,7 +245,8 @@ public class GameActivity extends AppCompatActivity {
         }
         else{
             Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
-
+            Intent intent = new Intent(this, gameover.class);
+            startActivityForResult(intent, 0);
             //game over na ba
         }
     }
@@ -374,6 +377,9 @@ public class GameActivity extends AppCompatActivity {
         });
     }
 
-
-
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        //super.onActivityResult(requestCode, resultCode, data);
+        finish();
+    }
 }
