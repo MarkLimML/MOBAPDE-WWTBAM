@@ -26,7 +26,7 @@ public class GameActivity extends AppCompatActivity {
 
     TextView textview_question,textView_timer;
     ProgressBar progressBar;
-    Button buttonA,buttonB,buttonC,buttonD;
+    Button buttonA,buttonB,buttonC,buttonD,fifty,people,swap;
 
     JSONArray jsonArray;
     JSONArray choices;
@@ -58,6 +58,10 @@ public class GameActivity extends AppCompatActivity {
         buttonB = findViewById(R.id.answerB);
         buttonC = findViewById(R.id.answerC);
         buttonD = findViewById(R.id.answerD);
+
+        fifty = findViewById(R.id.fifty);
+        people = findViewById(R.id.fifty);
+        swap = findViewById(R.id.fifty);
 
         textview_question = findViewById(R.id.textview_question);
         textView_timer = findViewById(R.id.textView_timer);
@@ -147,13 +151,26 @@ public class GameActivity extends AppCompatActivity {
 
             JSONObject jOb = new JSONObject(json);
 
-            jsonArray = jOb.getJSONArray("questions");;
+            jsonArray = jOb.getJSONArray("questions");
+            jsonArray = shuffle(jsonArray);
 
         } catch (IOException e) {
             e.printStackTrace();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    public static JSONArray shuffle (JSONArray array) throws JSONException {
+        Random rnd = new Random();
+        for (int i = array.length() - 1; i >= 0; i--)
+        {
+            int j = rnd.nextInt(i + 1);
+            Object object = array.get(j);
+            array.put(j, array.get(i));
+            array.put(i, object);
+        }
+        return array;
     }
 
     public void showQuestionAndChoices(){
@@ -260,6 +277,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifePeople(View v){
         v=findViewById(R.id.people);
+        v.setEnabled(false);
         //v.setVisibility(View.GONE);
 
 
