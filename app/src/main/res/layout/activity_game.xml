@@ -51,30 +51,6 @@
             android:text="Question"
             android:textColor="@android:color/white" />
 
-        <TextView
-            android:id="@+id/textView_timer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="31dp"
-
-
-            android:text="30"
-            android:textColor="@android:color/white"
-            android:textSize="30dp"
-            android:layout_centerHorizontal="true"/>
-
-        <ProgressBar
-            android:id="@+id/progressBar"
-            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-            android:layout_below="@+id/textView_timer"
-            android:layout_width="459dp"
-            android:layout_height="20dp"
-            android:layout_centerHorizontal="true"
-
-
-
-            />
-
         <Button
             android:id="@+id/volume"
             android:layout_width="57dp"
@@ -99,6 +75,36 @@
 
     </RelativeLayout>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        android:layout_alignTop="@+id/questionpart">
+
+        <TextView
+            android:id="@+id/textView_timer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="229dp"
+            android:layout_marginLeft="229dp"
+            android:layout_marginTop="31dp"
+
+            android:text="30"
+            android:textColor="@android:color/white"
+            android:textSize="30dp"
+            android:layout_centerHorizontal="true"/>
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+            android:layout_width="118dp"
+            android:layout_height="104dp"
+            android:layout_centerInParent="true"
+            android:progressDrawable="@drawable/circle"/>
+
+    </RelativeLayout>
+
     <LinearLayout
         android:id="@+id/answerpart"
         android:layout_width="wrap_content"
@@ -117,9 +123,10 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questiona"
-            android:onClick="checkA"
+
             android:text="AAAAAAA A AA AAAAAAA"
-            android:textColor="@android:color/white" />
+            android:textColor="@android:color/white"
+            android:onClick="checkA"/>
 
         <Button
             android:id="@+id/answerB"
@@ -130,9 +137,10 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questionb"
-            android:onClick="checkB"
+
             android:text="BBBB BBBBB BBBB"
             android:textColor="@android:color/white"
+            android:onClick="checkB"
 
             />
 
@@ -145,10 +153,10 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questionc"
-            android:onClick="checkC"
+
             android:text="CCCCCCCCCCCCCCCCC CCCCCCCCC"
             android:textColor="@android:color/white"
-
+            android:onClick="checkC"
             />
 
         <Button
@@ -159,10 +167,10 @@
             android:layout_marginTop="10dp"
             android:autoSizeTextType="uniform"
             android:background="@drawable/questiond"
-            android:onClick="checkD"
+
             android:text="DDDDDDDDDDDD DDDDDDDDDDD"
             android:textColor="@android:color/white"
-
+            android:onClick="checkD"
             />
 
 
