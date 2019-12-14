@@ -4,10 +4,8 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.JsonReader;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -22,11 +20,9 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Random;
 
-import static android.view.View.VISIBLE;
-
 public class GameActivity extends AppCompatActivity {
 
-    TextView textview_question,textView_timer;
+    TextView textview_question,textView_timer,money;
     ProgressBar progressBar;
     Button buttonA,buttonB,buttonC,buttonD,fifty,people,swap;
 
@@ -39,6 +35,8 @@ public class GameActivity extends AppCompatActivity {
     int hidChoiceNum, firstHidNum,secondHidNum;
     int fnum=0, snum=0, tnum=0,lnum=0;
     int flimit,slimit;
+
+    int[] scores = {0, 100, 200, 300, 500, 1000, 2000, 4000, 8000, 16000, 32000, 64000, 125000, 250000, 500000, 1000000};
 
     static bgmusic_controller bgm;
 
@@ -69,10 +67,14 @@ public class GameActivity extends AppCompatActivity {
         textView_timer = findViewById(R.id.textView_timer);
         textView_timer.setText(String.valueOf(progressValue));
 
+        money = findViewById(R.id.money);
+        money.setText("$"+scores[0]);
+
         progressBar = findViewById(R.id.progressBar);
 
         progressBar.setMax(30);
         //setProgressValue();
+        progressValue = 0;
         getJson();
         showQuestionAndChoices();
 
@@ -195,13 +197,18 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void showQuestionAndChoices(){
-
+        Random rnd = new Random();
         setVisibleBtn();
 
         try {
-            if(questionNum > 10){
-                questionNum = 0;
-            }
+            questionNum = rnd.nextInt(10);
+            if(progressValue < 5)
+                questionNum+=0;
+            else if(progressValue < 10)
+                questionNum+=10;
+            else if(progressValue < 15)
+                questionNum+=20;
+
             obj = jsonArray.getJSONObject(questionNum);
 
             choices = obj.getJSONArray("answerChoices");
@@ -239,15 +246,29 @@ public class GameActivity extends AppCompatActivity {
         if(choiceNum == correctAns){
             Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
             questionNum++;
-            if(questionNum >10){
-                questionNum = 0;
+
+            progressValue++;
+
+            money.setText("$"+scores[progressValue]);
+            if(progressValue == 15) {
+                Intent intent = new Intent(this, GameOver.class);
+                intent.putExtra("score", money.getText().subSequence(1, money.getText().length()-1));
+                startActivityForResult(intent, 0);
             }
-            progressValue = 0;
+
             showQuestionAndChoices();
         }
         else{
+            int fscore = 0;
+            if(progressValue < 5)
+                fscore = scores[0];
+            else if(progressValue < 10)
+                fscore = scores[5];
+            else if(progressValue < 15)
+                fscore = scores[10];
             Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, gameover.class);
+            Intent intent = new Intent(this, GameOver.class);
+            intent.putExtra("score", String.valueOf(fscore));
             startActivityForResult(intent, 0);
             //game over na ba
         }
