@@ -169,31 +169,36 @@ public class GameActivity extends AppCompatActivity {
 
     public static JSONArray shuffle (JSONArray array) throws JSONException {
         Random rnd = new Random();
-        for (int i = array.length() - 1; i >= 0; i--)
+        for (int i = array.length() - 1; i > 0; i--)
         {
             int j = rnd.nextInt(i + 1);
-            JSONObject jo = array.getJSONObject(i);
+            //JSONObject jo = array.getJSONObject(i);
             JSONObject jo2 = array.getJSONObject(j);
-            if(jo != jo2) {
-                if ((jo.getInt("difficulty") == 3 && jo2.getInt("difficulty") == 3)/* && (i < array.length()-1 && i >= 10)*/) {
+            //Boolean same = jo.equals(jo2);
+
+
+            if (i > 19) {
+                if(j > 19 && jo2.getInt("difficulty") == 3) {
                     Object object = array.get(j);
                     array.put(j, array.get(i));
                     array.put(i, object);
-                } else if ((jo.getInt("difficulty") == 2 && jo2.getInt("difficulty") == 2)/* && (i < 9 && i >= 5)*/) {
-                    Object object = array.get(j);
-                    array.put(j, array.get(i));
-                    array.put(i, object);
-                } else if ((jo.getInt("difficulty") == 1 && jo2.getInt("difficulty") == 1)/* && (i < 4 && i >= 0)*/) {
-                    Object object = array.get(j);
-                    array.put(j, array.get(i));
-                    array.put(i, object);
-                } else {
-                    i++;
                 }
-            }
-            else {
+            } else if (i < 20 && i > 9) {
+                if((j < 20 && j > 9) && jo2.getInt("difficulty") == 2) {
+                    Object object = array.get(j);
+                    array.put(j, array.get(i));
+                    array.put(i, object);
+                }
+            } else if (i < 10 && i > -1) {
+                if((j < 10 && j > -1) && jo2.getInt("difficulty") == 1) {
+                    Object object = array.get(j);
+                    array.put(j, array.get(i));
+                    array.put(i, object);
+                }
+            } else {
                 i++;
             }
+            System.out.println(i+" "+j);
         }
         return array;
     }
@@ -201,17 +206,20 @@ public class GameActivity extends AppCompatActivity {
     public void showQuestionAndChoices(){
         Random rnd = new Random();
         setVisibleBtn();
-
+        int x = 4;
         try {
-            questionNum = rnd.nextInt(10);
-            if(progressValue < 5)
-                questionNum+=0;
-            else if(progressValue < 10)
-                questionNum+=10;
-            else if(progressValue < 15)
-                questionNum+=20;
+            do {
+                questionNum = rnd.nextInt(10);
+                if (progressValue < 5)
+                    questionNum += 0;
+                else if (progressValue < 10)
+                    questionNum += 10;
+                else if (progressValue < 15)
+                    questionNum += 20;
 
-            obj = jsonArray.getJSONObject(questionNum);
+                obj = jsonArray.getJSONObject(questionNum);
+                x = obj.getInt("difficulty");
+            } while (x == 4);
 
             choices = obj.getJSONArray("answerChoices");
 
@@ -246,6 +254,11 @@ public class GameActivity extends AppCompatActivity {
 
     public void checkAnswer(int choiceNum){
         if(choiceNum == correctAns){
+            try {
+                jsonArray.getJSONObject(questionNum).put("difficulty", 4);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
             Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
             questionNum++;
 
@@ -257,8 +270,8 @@ public class GameActivity extends AppCompatActivity {
                 intent.putExtra("score", money.getText().subSequence(1, money.getText().length()-1));
                 startActivityForResult(intent, 0);
             }
-
-            showQuestionAndChoices();
+            if(progressValue < 15)
+                showQuestionAndChoices();
         }
         else{
             int fscore = 0;
