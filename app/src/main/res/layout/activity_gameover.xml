@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:background="@color/colorPrimaryDark"
-    tools:context=".GameActivity">
+    tools:context=".GameOver">
 
     <RelativeLayout
         android:id="@+id/toppart"
@@ -113,6 +113,7 @@
 
             android:layout_below="@+id/start"
             android:layout_centerHorizontal="true"
+            android:onClick="exit"
             />
 
     </RelativeLayout>

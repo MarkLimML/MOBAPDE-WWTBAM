@@ -73,7 +73,7 @@ public class GameActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         progressBar.setMax(30);
-        //setProgressValue();
+        setProgressValue();
         progressValue = 0;
         getJson();
         showQuestionAndChoices();

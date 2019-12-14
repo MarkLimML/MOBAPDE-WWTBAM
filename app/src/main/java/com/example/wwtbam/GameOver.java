@@ -57,6 +57,11 @@ public class GameOver extends AppCompatActivity {
         finish();
 
     }
+
+    public void exit(View v) {
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+    }
 //according to net not advisable daw ung mag "exit" ung app, dapat ung os mismo kasi pagka
 // app lng di siya nag frefree ng resources sa phone based sa understanding ko
 }
