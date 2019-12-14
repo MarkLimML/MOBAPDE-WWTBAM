@@ -44,7 +44,7 @@ public class gameover extends AppCompatActivity {
     //probably won't work, tried  to use "recreate()" but can not implement it
     public void start(View view) {
         bgm.stopbg();
-        Intent intent = new Intent(this, GameActivity.class);
+        Intent intent = new Intent(gameover.this, GameActivity.class);
         startActivity(intent);
         finish();
 
