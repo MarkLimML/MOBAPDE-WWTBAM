@@ -291,7 +291,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifeFifty(View v){
         v=findViewById(R.id.fifty);
-       // v.setVisibility(View.GONE);
+        v.setVisibility(View.GONE);
 
             firstHidNum = random.nextInt(4);
             secondHidNum = random.nextInt(4);
@@ -336,7 +336,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifePeople(View v){
         v=findViewById(R.id.people);
-        //v.setVisibility(View.GONE);
+        v.setVisibility(View.GONE);
 
 
         while(fnum < 50){
@@ -388,7 +388,7 @@ public class GameActivity extends AppCompatActivity {
 
     public void lifeSwap(View v){
         v=findViewById(R.id.swap);
-       // v.setVisibility(View.GONE);
+        v.setVisibility(View.GONE);
         questionNum++;
         showQuestionAndChoices();
     }
