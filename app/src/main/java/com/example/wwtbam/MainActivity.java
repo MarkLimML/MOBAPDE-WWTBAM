@@ -55,6 +55,10 @@ public class MainActivity extends AppCompatActivity {
         //finish();
     }
 
+    public void exit(View v) {
+        int pid = android.os.Process.myPid();
+        android.os.Process.killProcess(pid);
+    }
 
 
 
