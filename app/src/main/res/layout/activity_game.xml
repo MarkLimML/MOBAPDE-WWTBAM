@@ -117,7 +117,7 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questiona"
-
+            android:onClick="checkA"
             android:text="AAAAAAA A AA AAAAAAA"
             android:textColor="@android:color/white" />
 
@@ -130,7 +130,7 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questionb"
-
+            android:onClick="checkB"
             android:text="BBBB BBBBB BBBB"
             android:textColor="@android:color/white"
 
@@ -145,7 +145,7 @@
 
             android:autoSizeTextType="uniform"
             android:background="@drawable/questionc"
-
+            android:onClick="checkC"
             android:text="CCCCCCCCCCCCCCCCC CCCCCCCCC"
             android:textColor="@android:color/white"
 
@@ -159,7 +159,7 @@
             android:layout_marginTop="10dp"
             android:autoSizeTextType="uniform"
             android:background="@drawable/questiond"
-
+            android:onClick="checkD"
             android:text="DDDDDDDDDDDD DDDDDDDDDDD"
             android:textColor="@android:color/white"
 
