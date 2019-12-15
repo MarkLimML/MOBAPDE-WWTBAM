@@ -293,6 +293,7 @@ public class GameActivity extends AppCompatActivity {
             }
         }
         else{
+            bgm.stopbg();
             if(progressValue < 5)
                 fscore = scores[0];
             else if(progressValue < 10)
