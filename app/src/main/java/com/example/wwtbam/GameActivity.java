@@ -229,10 +229,30 @@ public class GameActivity extends AppCompatActivity {
             buttonC.setText(choices.get(2).toString());
             buttonD.setText(choices.get(3).toString());
             zawarudo = false;
+            enableAll();
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
+    }
+
+    public void disableAll() {
+        buttonA.setEnabled(false);
+        buttonB.setEnabled(false);
+        buttonC.setEnabled(false);
+        buttonD.setEnabled(false);
+        fifty.setEnabled(false);
+        people.setEnabled(false);
+        swap.setEnabled(false);
+    }
+    public void enableAll() {
+        buttonA.setEnabled(true);
+        buttonB.setEnabled(true);
+        buttonC.setEnabled(true);
+        buttonD.setEnabled(true);
+        fifty.setEnabled(true);
+        people.setEnabled(true);
+        swap.setEnabled(true);
     }
 
     public void checkA(View v){
@@ -253,6 +273,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkAnswer(int choiceNum){
+        disableAll();
         zawarudo = true;
         int fscore = 0;
         if(choiceNum == correctAns){
