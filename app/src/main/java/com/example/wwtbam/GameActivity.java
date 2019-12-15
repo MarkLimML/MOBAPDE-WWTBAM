@@ -4,6 +4,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
 import android.view.View;
@@ -24,14 +25,14 @@ public class GameActivity extends AppCompatActivity {
 
     TextView textview_question,textView_timer,money;
     ProgressBar progressBar;
-    Button buttonA,buttonB,buttonC,buttonD,fifty,people,swap;
+    Button buttonA,buttonB,buttonC,buttonD,fifty,people,swap,temp;
 
     JSONArray jsonArray;
     JSONArray choices;
     JSONObject obj;
 
     int questionNum=0,correctAns;
-    int progressValue=0;
+    int progressValue=0, timeValue = 0;
     int hidChoiceNum, firstHidNum,secondHidNum;
     int fnum=0, snum=0, tnum=0,lnum=0;
     int flimit,slimit;
@@ -44,7 +45,7 @@ public class GameActivity extends AppCompatActivity {
 
     Random random = new Random();
 
-    boolean hidflag;
+    boolean zawarudo = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,7 +74,7 @@ public class GameActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.progressBar);
 
         progressBar.setMax(30);
-        //setProgressValue();
+        setProgressValue();
         progressValue = 0;
         getJson();
         showQuestionAndChoices();
@@ -101,35 +102,32 @@ public class GameActivity extends AppCompatActivity {
     public void setProgressValue() {
 
         // set the progress
-        progressBar.setProgress(progressValue);
-        textView_timer.setText(String.valueOf(progressValue));
+        progressBar.setProgress(timeValue);
+        textView_timer.setText(String.valueOf(timeValue));
 
         new Thread(new Runnable() {
             public void run() {
-                while (progressValue <= 30) {
-                    progressValue += 1;
+                while (timeValue <= 30) {
+                    if(zawarudo)
+                        timeValue = 0;
+                    else
+                        timeValue += 1;
                     // Update the progress bar and display the
                     //current value in the text view
                     handler.post(new Runnable() {
                         public void run() {
-                            progressBar.setProgress(progressValue);
-                            textView_timer.setText(progressValue+"/"+progressBar.getMax());
+                            progressBar.setProgress(timeValue);
+                            textView_timer.setText(timeValue+"/"+progressBar.getMax());
                         }
                     });
-                    if(progressValue == 30){
+                    if(timeValue == 30){
                         showToast("Times Up !!!");
-                        questionNum++;
 
-                        if(questionNum == 9){
-                            questionNum = 0;
-                        }
-
-                        showQuestionAndChoices();
-                        progressValue = 0;
+                        checkAnswer(5);
+                        timeValue = 0;
                     }
                     try {
-                        // Sleep for 200 milliseconds.
-                        Thread.sleep(500);
+                        Thread.sleep(1000);
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
@@ -230,6 +228,7 @@ public class GameActivity extends AppCompatActivity {
             buttonB.setText(choices.get(1).toString());
             buttonC.setText(choices.get(2).toString());
             buttonD.setText(choices.get(3).toString());
+            zawarudo = false;
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -237,22 +236,24 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void checkA(View v){
+        temp = buttonA;
         checkAnswer(1);
     }
-
     public void checkB(View v){
+        temp = buttonB;
         checkAnswer(2);
     }
-
     public void checkC(View v){
+        temp = buttonC;
         checkAnswer(3);
     }
-
     public void checkD(View v){
+        temp = buttonD;
         checkAnswer(4);
     }
 
     public void checkAnswer(int choiceNum){
+        zawarudo = true;
         int fscore = 0;
         if(choiceNum == correctAns){
             try {
@@ -260,7 +261,9 @@ public class GameActivity extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-            Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
+            //Toast.makeText(getApplicationContext(),"You got the Correct Answer 🙂", Toast.LENGTH_SHORT).show();
+            temp.setTextColor(Color.GREEN);
+
             questionNum++;
 
             progressValue++;
@@ -268,12 +271,26 @@ public class GameActivity extends AppCompatActivity {
             money.setText("$"+scores[progressValue]);
             if(progressValue == 15) {
                 fscore = scores[15];
-                Intent intent = new Intent(this, GameOver.class);
+                final Intent intent = new Intent(this, GameOver.class);
                 intent.putExtra("score", String.valueOf(fscore));
-                startActivityForResult(intent, 0);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        temp.setTextColor(Color.WHITE);
+                        startActivityForResult(intent, 0);
+                    }
+                }, 3000);
             }
-            if(progressValue < 15)
-                showQuestionAndChoices();
+            if(progressValue < 15) {
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        temp.setTextColor(Color.WHITE);
+                        timeValue = 0;
+                        showQuestionAndChoices();
+                    }
+                }, 3000);
+            }
         }
         else{
             if(progressValue < 5)
@@ -282,10 +299,19 @@ public class GameActivity extends AppCompatActivity {
                 fscore = scores[5];
             else if(progressValue < 15)
                 fscore = scores[10];
-            Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
-            Intent intent = new Intent(this, GameOver.class);
+            //Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
+            temp.setTextColor(Color.RED);
+
+            final Intent intent = new Intent(this, GameOver.class);
             intent.putExtra("score", String.valueOf(fscore));
-            startActivityForResult(intent, 0);
+            new Handler().postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    temp.setTextColor(Color.WHITE);
+                    startActivityForResult(intent, 0);
+                }
+            }, 3000);
+
             //game over na ba
         }
     }
