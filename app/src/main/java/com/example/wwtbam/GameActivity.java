@@ -473,6 +473,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     public void gameover() {
+        bgm.stopbg();
         final Intent intent = new Intent(this, GameOver.class);
         intent.putExtra("score", String.valueOf(fscore));
         if(temp!=null)
