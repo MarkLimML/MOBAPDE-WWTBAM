@@ -31,7 +31,7 @@ public class GameActivity extends AppCompatActivity {
     JSONArray choices;
     JSONObject obj;
 
-    int questionNum=0,correctAns;
+    int questionNum=0,correctAns,fscore;
     int progressValue=0, timeValue = 0;
     int hidChoiceNum, firstHidNum,secondHidNum;
     int fnum=0, snum=0, tnum=0,lnum=0;
@@ -123,7 +123,13 @@ public class GameActivity extends AppCompatActivity {
                     if(timeValue == 30){
                         showToast("Times Up !!!");
 
-                        checkAnswer(5);
+                        if(progressValue < 5)
+                            fscore = scores[0];
+                        else if(progressValue < 10)
+                            fscore = scores[5];
+                        else if(progressValue < 15)
+                            fscore = scores[10];
+                        gameover();
                         timeValue = 0;
                     }
                     try {
@@ -275,7 +281,7 @@ public class GameActivity extends AppCompatActivity {
     public void checkAnswer(int choiceNum){
         disableAll();
         zawarudo = true;
-        int fscore = 0;
+        fscore = 0;
         if(choiceNum == correctAns){
             try {
                 jsonArray.getJSONObject(questionNum).put("difficulty", 4);
@@ -322,14 +328,16 @@ public class GameActivity extends AppCompatActivity {
             else if(progressValue < 15)
                 fscore = scores[10];
             //Toast.makeText(getApplicationContext(),"Sadly, You got the Wrong Answer 😞",Toast.LENGTH_SHORT).show();
-            temp.setTextColor(Color.RED);
+            if(temp!=null)
+                temp.setTextColor(Color.RED);
 
             final Intent intent = new Intent(this, GameOver.class);
             intent.putExtra("score", String.valueOf(fscore));
             new Handler().postDelayed(new Runnable() {
                 @Override
                 public void run() {
-                    temp.setTextColor(Color.WHITE);
+                    if(temp!=null)
+                        temp.setTextColor(Color.WHITE);
                     startActivityForResult(intent, 0);
                 }
             }, 3000);
@@ -462,6 +470,14 @@ public class GameActivity extends AppCompatActivity {
                 buttonD.setVisibility(View.VISIBLE);
             }
         });
+    }
+
+    public void gameover() {
+        final Intent intent = new Intent(this, GameOver.class);
+        intent.putExtra("score", String.valueOf(fscore));
+        if(temp!=null)
+            temp.setTextColor(Color.WHITE);
+        startActivityForResult(intent, 0);
     }
 
     @Override
