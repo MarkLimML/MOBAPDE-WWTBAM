@@ -6,6 +6,8 @@ Running the Program:
 
 Installation: https://developer.android.com/studio/install
 
-2) Open the project with Android Studio
+2) Clone the repository
 
-3) Press "Run Program"
+3) Open the project with Android Studio
+
+4) Press "Run Program"
